@@ -62,7 +62,7 @@ int main() {
       continue;
     } else if (strcmp(args[0], "cd") == 0) {
       if (args[1] == NULL) {
-        fprintf(stderr, "cd: missing argument\n");
+        fprintf(stdout, "cd: missing argument\n");
       } else {
         if (chdir(args[1]) != 0) {
           perror("cd failed");
