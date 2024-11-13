@@ -61,9 +61,9 @@ int main() {
       printf("The allowed commands are:\n1: cp\n2: touch\n3: mkdir\n4: ls\n5: pwd\n6: cat\n7: grep\n8: chmod\n9: diff\n10: cd\n11: exit\n12: help\n");
       continue;
     } else if (strcmp(args[0], "cd") == 0) {
-      if (args[1] == NULL) {
+      /*if (args[1] == NULL) {
         fprintf(stdout, "cd: missing argument\n");
-      } else if (args[2] != NULL) {
+      } else*/ if (args[2] != NULL) {
         fprintf(stdout, "cd: too many arguments\n");
       } else {
         if (chdir(args[1]) != 0) {
