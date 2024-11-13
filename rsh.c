@@ -29,7 +29,7 @@ int main() {
     // Add variables as needed
 
     char line[256];
-    char *args[10];
+    char *args[20];
     posix_spawnattr_t attr;
 
     while (1) {
