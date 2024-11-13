@@ -66,9 +66,10 @@ int main() {
       } else*/ if (args[2] != NULL) {
         fprintf(stdout, "cd: too many arguments\n");
       } else {
-        if (chdir(args[1]) != 0) {
+        chdir(args[1]);
+        /*if (chdir(args[1]) != 0) {
           perror("cd failed");
-        }
+        }*/
       }
       continue;
     }
