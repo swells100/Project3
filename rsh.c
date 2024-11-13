@@ -63,7 +63,7 @@ int main() {
     } else if (strcmp(args[0], "cd") == 0) {
       if (args[1] == NULL) {
         fprintf(stdout, "cd: missing argument\n");
-      } else if (args[2] != NULL) {
+      } else if (sizeof(args) > 1) {
         fprintf(stdout, "cd: too many arguments\n");
       } else {
         if (chdir(args[1]) != 0) {
