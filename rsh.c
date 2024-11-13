@@ -62,7 +62,7 @@ int main() {
       continue;
     } else if (strcmp(args[0], "cd") == 0) {
       if (args[2] != NULL) {
-        fprintf(stdout, "cd: too many arguments\n");
+        fprintf(stdout, "-rsh: cd: too many arguments\n");
       } else {
         chdir(args[1]);
       }
