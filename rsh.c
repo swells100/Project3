@@ -58,7 +58,7 @@ int main() {
     if (strcmp(args[0], "exit") == 0) {
       break;
     } else if (strcmp(args[0], "help") == 0) {
-      printf("Allowed commands: cp, touch, mkdir, ls, pwd, cat, grep, chmod, diff, cd, exit, help\n");
+      printf("The allowed commands are:\n1: cp\n2: touch\n3: mkdir\n4: ls\n5: pwd\n6: cat\n7: grep\n8: chmod\n9: diff\n10: cd\n11: exit\n12: help\n");
       continue;
     } else if (strcmp(args[0], "cd") == 0) {
       if (args[1] == NULL) {
@@ -82,7 +82,7 @@ int main() {
       if (waitpid(pid, &status, 0) == -1) {
         perror("waitpid failed");
       } else if (WIFEXITED(status)) {
-        printf("Command %s exited with status %d\n", args[0], WEXITSTATUS(status));
+        printf("Spawned process exited with status %d\n", WEXITSTATUS(status));
       }
     }
 
