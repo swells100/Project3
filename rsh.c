@@ -51,7 +51,7 @@ int main() {
     args[arg_count] = NULL;
 
     if (!isAllowed(args[0])) {
-      printf("NOT ALLOWED!");
+      printf("NOT ALLOWED!\n");
       continue;
     }
 
@@ -72,21 +72,30 @@ int main() {
     }
 
     pid_t pid;
-    int status;
+        int status;
+        
+        posix_spawnattr_init(&attr);
 
-    posix_spawnattr_init(&attr);
-
+        // Spawn a new process
     if (posix_spawnp(&pid, args[0], NULL, &attr, args, environ) != 0) {
-      perror("spawn failed");
-    } else {
-      if (waitpid(pid, &status, 0) == -1) {
-        perror("waitpid failed");
-      } else if (WIFEXITED(status)) {
-        printf("Spawned process exited with status %d\n", WEXITSTATUS(status));
-      }
+        perror("spawn failed");
+        exit(EXIT_FAILURE);
     }
 
-    posix_spawnattr_destroy(&attr);
+    // Wait for the spawned process to terminate
+    if (waitpid(pid, &status, 0) == -1) {
+        perror("waitpid failed");
+        exit(EXIT_FAILURE);
+    }
+
+    if (WIFEXITED(status)) {
+       // printf("Spawned process exited with status %d\n", WEXITSTATUS(status));
+    }
+ 
+
+        posix_spawnattr_destroy(&attr);
+
+
 
 	// TODO
 	// Add code to spawn processes for the first 9 commands
