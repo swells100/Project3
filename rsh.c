@@ -89,7 +89,11 @@ int main() {
     }
 
     if (WIFEXITED(status)) {
-       // printf("Spawned process exited with status %d\n", WEXITSTATUS(status));
+      int exit_status = WEXITSTATUS(status);
+    if (exit_status != 0) {
+        printf("Spawned process exited with status %d\n", WEXITSTATUS(status));
+
+    }
     }
  
 
